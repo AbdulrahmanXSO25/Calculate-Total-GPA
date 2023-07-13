@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-900 to-pink-700 min-h-screen">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold text-white mb-4">GPA Calculator</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">First-Term GPA</h2>
+                <div class="flex items-center mb-8">
+                    <label class="block text-gray-700 font-bold mr-4" for="ftgpa">GPA:</label>
+                    <input class="border border-gray-400 p-2 w-24 rounded-lg" type="number" id="ftgpa" step="0.01" min="0" max="4" placeholder="e.g. 3.7">
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Second-Term GPA</h2>
+                <div class="flex items-center mb-8">
+                    <label class="block text-gray-700 font-bold mr-4" for="stgpa">GPA:</label>
+                    <input class="border border-gray-400 p-2 w-24 rounded-lg" type="number" id="stgpa" step="0.01" min="0" max="4" placeholder="e.g. 3.6">
+                </div>
+            </div>
+        </div>
+        <div class="mt-8">
+            <button class="bg-white text-pink-500 hover:bg-pink-500 hover:text-white font-bold py-2 px-4 rounded-lg shadow-lg" onclick="calculateGPA()">Calculate GPA</button>
+        </div>
+        <div class="mt-8" id="totalGPA" style="display: none;">
+            <h2 class="text-2xl font-bold mb-4 text-white">Total GPA</h2>
+            <p class="text-5xl font-bold text-white" id="gpaResult"></p>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script>
+        function calculateGPA() {
+            // Get input values
+            var ftGPA = parseFloat(document.getElementById("ftgpa").value);
+            var stGPA = parseFloat(document.getElementById("stgpa").value);
+
+            // Calculate total GPA
+            var totalGPA = (ftGPA * 16 + stGPA * 18) / 34.0;
+
+            // Display total GPA
+            document.getElementById("gpaResult").innerHTML = totalGPA.toFixed(2);
+            document.getElementById("totalGPA").style.display = "block";
+        }
+    </script>
+</body>
+</html>
